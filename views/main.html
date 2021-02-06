@@ -1,3 +1,4 @@
+<html>
 <head>
     <title>Alarm Clock</title>
     <script
@@ -36,6 +37,7 @@
             margin-top:15px;
             float:right;
             fill:white;
+            cursor:pointer;
             
         }
 
@@ -73,14 +75,36 @@
         </ul>
     </div>
     <script>
-     function getTime (){ 
+    function isElectron() {
+    // Renderer process
+    if (typeof window !== 'undefined' && typeof window.process === 'object' && window.process.type === 'renderer') {
+        return true;
+    }
+
+    // Main process
+    if (typeof process !== 'undefined' && typeof process.versions === 'object' && !!process.versions.electron) {
+        return true;
+    }
+
+    // Detect the user agent when the `nodeIntegration` option is set to true
+    if (typeof navigator === 'object' && typeof navigator.userAgent === 'string' && navigator.userAgent.indexOf('Electron') >= 0) {
+        return true;
+    }
+
+    return false;
+}
+    let ipcRenderer
+    isElectron()? {ipcRenderer} = require('electron'):console.log(isElectron())
+    
+
+    function getTime (){ 
     let currentDate=new Date()
     let h= currentDate.getHours()
     let m= currentDate.getMinutes()
     let s= currentDate.getSeconds()
 
     document.querySelector('#time').innerHTML=`${h<10?"0"+h:h}:${m<10?"0"+m:m}:${s<10?"0"+s:s}`
-    //
+    
     
     }
 
@@ -107,5 +131,15 @@
     setInterval(getDate,60000)
     setInterval(getTime,1000)
 
+    let settingsBtn=document.querySelector('svg')
+    settingsBtn.addEventListener('click',()=>{
+        
+        isElectron()?ipcRenderer.send('settings:open'):window.location.replace('http://localhost:3000/settings')
+    })
+
+
+    
+
     </script>
 </body>
+</html>

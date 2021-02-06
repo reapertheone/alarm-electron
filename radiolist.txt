@@ -1,0 +1,2 @@
+http://stream.radio1.hu/mid.mp3 Radio1
+https://icast.connectmedia.hu/4738/mr2.mp3 Petofi

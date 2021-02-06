@@ -1,0 +1,32 @@
+{
+  "name": "alarm-electron",
+  "version": "0.0.1",
+  "description": "electron alarm clock",
+  "main": "index.js",
+  "scripts": {
+    "electron": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reapertheone/alarm-electron.git"
+  },
+  "keywords": [
+    "alarm",
+    "clock",
+    "node",
+    "electron"
+  ],
+  "author": "GT",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reapertheone/alarm-electron/issues"
+  },
+  "homepage": "https://github.com/reapertheone/alarm-electron#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "electron": "^11.2.3",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
+  }
+}
